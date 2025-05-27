@@ -302,148 +302,148 @@ const Productdetail =
         Img: './img/shoe 1.png'
     },
     {
-        id: 43,
+        id: 44,
         Title: "Mens' Heeled Loafers - Black.",
         Cat: 'Shoes',
         Price: '44000',
         Img: './img/shoe 2.png'
     },
     {
-        id: 44,
+        id: 45,
         Title: "Unisex Breathable Trainers - Black.",
         Cat: 'Shoes',
         Price: '21000',
         Img: './img/shoe 3.png'
     },
     {
-        id: 45,
+        id: 46,
         Title: "Womens' Business Class Loafers - Black.",
         Cat: 'Shoes',
         Price: '53000',
         Img: './img/shoe 4.png'
     },
     {
-        id: 46,
+        id: 47,
         Title: "Mens' Flat Botton Loafers - Brown.",
         Cat: 'Shoes',
         Price: '26000',
         Img: './img/shoe 5.png'
     },
     {
-        id: 47,
+        id: 48,
         Title: "Womens' Sky Blue sneakers.",
         Cat: 'Shoes',
         Price: '19000',
         Img: './img/shoe 6.png'
     },
     {
-        id: 48,
+        id: 49,
         Title: "Dozen HB pencils - Green.",
         Cat: 'School Supplies',
         Price: '2000',
         Img: './img/ss1.png'
     },
     {
-        id: 49,
+        id: 50,
         Title: "Correctional Pen .",
         Cat: 'School Supplies',
         Price: '300',
         Img: './img/ss2.png'
     },
     {
-        id: 50,
+        id: 51,
         Title: "Dozen Of Pencil Eraser.",
         Cat: 'School Supplies',
         Price: '1200',
         Img: './img/ss3.png'
     },
     {
-        id: 51,
+        id: 52,
         Title: "A Pack Of Lucky Blue Pens - 50pcs.",
         Cat: 'School Supplies',
         Price: '6000',
         Img: './img/ss4.png'
     },
     {
-        id: 52,
+        id: 53,
         Title: "A pack of Lucky Black Pens - 50pcs.",
         Cat: 'School Supplies',
         Price: '6000',
         Img: './img/ss6.png'
     },
     {
-        id: 53,
+        id: 54,
         Title: "A pack of Pencil Sharpeners - 50pcs.",
         Cat: 'School Supplies',
         Price: '2000',
         Img: './img/ss7.png'
     },
     {
-        id: 54,
+        id: 55,
         Title: "Blue Pencil Case",
         Cat: 'School Supplies',
         Price: '6000',
         Img: './img/ss9.png'
     },
     {
-        id: 55,
+        id: 56,
         Title: "Grey School Bag.",
         Cat: 'School Supplies',
         Price: '25000',
         Img: './img/ss10.png'
     },{
-        id: 56,
+        id: 57,
         Title: "Black Female Tote Bag.",
         Cat: 'School Supplies',
         Price: '23000',
         Img: './img/ss11.png'
     },
     {
-        id: 57,
+        id: 58,
         Title: "Bedtop Table With Cup Holder.",
         Cat: 'School Supplies',
         Price: '15000',
         Img: './img/ss15.png'
     },
     {
-        id: 58,
+        id: 59,
         Title: "Book Of Biochemistry For Medical Students, Ninth Edition By DM Vasudevan.",
         Cat: 'Textbooks',
         Price: '20000',
         Img: './img/textbook 3.png'
     },{
-        id: 59,
+        id: 60,
         Title: "Short Textbook Of Public Health Medidicine For The Tropics, Revised Fourth Edition By CRC press.",
         Cat: 'Textbooks',
         Price: '10000',
         Img: './img/textbook 4.png'
     },{
-        id: 60,
+        id: 61,
         Title: "A Textbook Of Engineering Mechanics, Twentyth Edition By Bade Books.",
         Cat: 'Textbooks',
         Price: '25000',
         Img: './img/textbook 7.png'
     },{
-        id: 61,
+        id: 62,
         Title: "A Textbook Of Engineering Physics, Eleventh Edition By Bade Books.",
         Cat: 'Textbooks',
         Price: '25000',
         Img: './img/textbook 9.png'
     },{
-        id: 62,
+        id: 63,
         Title: "Textbook Of Medical Physiology, Fourteen Edition By John E. Wall & Micheal E. Wall.",
         Cat: 'Textbooks',
         Price: '26000',
         Img: './img/textbook 10.png'
     },
     {
-        id: 63,
+        id: 64,
         Title: "A Textbook Of Business Mathematics, Fourth Edition By Bade Books.",
         Cat: 'Textbooks',
         Price: '25000',
         Img: './img/textbook 5.png'
     },{
-        id: 64,
+        id: 65,
         Title: "A Textbook Of Fliud Mechanics And Hydrolic Machine With SI Units, Internatiinal Edition By Bade Books.",
         Cat: 'Textbooks',
         Price: '25000',

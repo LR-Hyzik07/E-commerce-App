@@ -12,13 +12,21 @@ const App = () => {
   const [detail, setDetail] = useState([])
   //filter product
   const [product, setProduct] = useState(Productdetail)
-  const searchbtn = (product) =>
+  const searchbtn = (category) =>
   {
-    const change = Productdetail.filter((x) =>
-    {
-      return x.Cat === product
-    })
-    setProduct(change)
+    const trimmedCategory = category.trim();
+    console.log("Filtering category:", trimmedCategory);
+    if(trimmedCategory === "All Products"){
+      setProduct(Productdetail);
+      console.log("Showing all products");
+    } else {
+      const change = Productdetail.filter((x) =>
+      {
+        return x.Cat === trimmedCategory
+      })
+      setProduct(change);
+      console.log("Filtered products count:", change.length);
+    }
   }
   //product detail
   const view = (product) =>
@@ -50,7 +58,7 @@ const App = () => {
     <>
     <BrowserRouter>
     <Navigate searchbtn={searchbtn}/>
-    <Rout product={product} setProduct={setProduct} detail={detail} view={view} close={close} setClose={setClose} cart={cart} setCart={setCart} addtocart={addtocart}/>
+    <Rout product={product} setProduct={setProduct} searchbtn={searchbtn} detail={detail} view={view} close={close} setClose={setClose} cart={cart} setCart={setCart} addtocart={addtocart}/>
     <Footer />
     </BrowserRouter>
     

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import './product.css'
 import './product.responsive.css'
 import Productdetail from './productdetail'
@@ -6,115 +6,109 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 import { BsEye } from "react-icons/bs";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { useAuth0 } from "@auth0/auth0-react";
-import { useLocation } from 'react-router-dom';
 
-const Product = ({product, setProduct, detail, view, close, setClose, addtocart}) => {
-    const location = useLocation();
-    const filterCategory = location.state?.filterCategory;
+const Product = ({product, setProduct, searchbtn, detail, view, close, setClose, addtocart}) => {
 
     const { loginWithRedirect, isAuthenticated } = useAuth0();
 
-    const filterproduct = (product) =>
-    {
-        const update = Productdetail.filter((x) =>
-        {
-            return x.Cat === product;
-        })
-        setProduct(update)
-    }
-    const AllProduct = () =>
-    {
-        setProduct(Productdetail)
-    }
+    // State to hold unique categories
+    const [categories, setCategories] = useState([]);
 
+    // On component mount, extract unique categories from Productdetail
     useEffect(() => {
-        if(filterCategory){
-            filterproduct(filterCategory);
-        } else {
-            AllProduct();
-        }
-    }, [filterCategory]);
+        const uniqueCategories = [...new Set(Productdetail.map(item => item.Cat))];
+        setCategories(uniqueCategories);
+    }, []);
 
-  return (
-    <>
+    const filterproduct = (category) =>
     {
-        close ?
-        <div className='product_detail'>
-        <div className='container'>
-            <button onClick={() => setClose(false)}className='closebtn'><AiOutlineCloseCircle /></button>
-            {
-                detail.map((curElm) =>
-                {
-                    return(
-                        <div className='productbox'>
-                            <div className='img-box'>
-                                <img src={curElm.Img} alt={curElm.Title}></img>
-                            </div>
-                            <div className='detail'>
-                                <h4>{curElm.Cat}</h4>
-                                <h2>{curElm.Title}</h2>
-                                <h3>#{curElm.Price}</h3>
-                                <button onClick={() => addtocart(curElm)}>Add to Cart</button>
-                            </div>
-                        </div>
-                    )
-                })
-            }
-            <div className='productbox'></div>
-        </div>
-    </div> : null
+        console.log("Filter clicked for category:", category);
+        searchbtn(category);
     }
-    <div className='products'>
-        <h2>Product</h2>
-        <p>Home . products</p>
-        <div className='container'>
-            <div className='filter'>
-                <div className='categories'>
-                    <h3>Categories</h3>
-                    <ul>
-                        <li onClick={() => AllProduct("")}>All Products</li>
-                        <li onClick={() => filterproduct("School Supplies")}>School Supplies</li>
-                        <li onClick={() => filterproduct("Gadgets And Accessories")}>Gadgets And Accessories</li>
-                        <li onClick={() => filterproduct("Shoes")}>Shoes</li>
-                        <li onClick={() => filterproduct("Textbooks")}>Textbooks</li>
-                    </ul>
-                </div>
-            </div>
-            <div className='productbox'>
-                <div className='content'>
+
+    return (
+        <>
+        {
+            close ?
+            <div className='product_detail'>
+            <div className='container'>
+                <button onClick={() => setClose(false)}className='closebtn'><AiOutlineCloseCircle /></button>
+                {
+                    detail.map((curElm) =>
                     {
-                        product.map((curElm) =>
+                        return(
+                            <div className='productbox' key={curElm.id}>
+                                <div className='img-box'>
+                                    <img src={curElm.Img} alt={curElm.Title}></img>
+                                </div>
+                                <div className='detail'>
+                                    <h4>{curElm.Cat}</h4>
+                                    <h2>{curElm.Title}</h2>
+                                    <h3>#{curElm.Price}</h3>
+                                    <button onClick={() => addtocart(curElm)}>Add to Cart</button>
+                                </div>
+                            </div>
+                        )
+                    })
+                }
+                <div className='productbox'></div>
+            </div>
+        </div> : null
+        }
+        <div className='products'>
+            <h2>Product</h2>
+            <p>Home . products</p>
+            <div className='container'>
+                <div className='filter'>
+                    <div className='categories'>
+                        <h3>Categories</h3>
+                        <ul>
+                            <li onClick={() => filterproduct("All Products")}>All Products</li>
+                            {
+                                categories.map((cat) => (
+                                    <li key={cat} onClick={() => filterproduct(cat)}>{cat}</li>
+                                ))
+                            }
+                        </ul>
+                    </div>
+                </div>
+                <div className='productbox'>
+                    <div className='content'>
                         {
-                            return(
-                                    <div className='box' key={curElm.id}>
-                                        <div className='img_box'>
-                                            <img src={curElm.Img} alt={curElm.Title}></img>
-                                            <div className='icon'>
-                                                {
-                                                    isAuthenticated ?
-                                                    <li onClick={() => addtocart(curElm)}><AiOutlineShoppingCart /></li>
-                                                    :
-                                                    <li onClick={() => loginWithRedirect()}><AiOutlineShoppingCart /></li>
-                                                }
-                                                <li onClick={() => view (curElm)}><BsEye /></li>
+                            product.map((curElm) =>
+                            {
+                                return(
+                                        <div className='box' key={curElm.id}>
+                                            <div className='img_box'>
+                                                <img src={curElm.Img} alt={curElm.Title}></img>
+                                                <div className='icon'>
+                                                    <ul>
+                                                        {
+                                                            isAuthenticated ?
+                                                            <li type="button" onClick={() => addtocart(curElm)} className="icon-btn"><AiOutlineShoppingCart /></li>
+                                                            :
+                                                            <li type="button" onClick={() => loginWithRedirect()} className="icon-btn"><AiOutlineShoppingCart /></li>
+                                                        }
+                                                        <li type="button" onClick={() => view(curElm)} className="icon-btn"><BsEye /></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div className='detail'>
+                                                <p>{curElm.Cat}</p>
+                                                <h3>{curElm.Title}</h3>
+                                                <h4>#{curElm.Price}</h4>
                                             </div>
                                         </div>
-                                        <div className='detail'>
-                                            <p>{curElm.Cat}</p>
-                                            <h3>{curElm.Title}</h3>
-                                            <h4>#{curElm.Price}</h4>
-                                        </div>
-                                    </div>
-                                
-                            )
-                        })
-                    }
+                                    
+                                )
+                            })
+                        }
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    </>
-  )
+        </>
+    )
 }
 
 export default Product
