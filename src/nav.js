@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaTruckFast } from "react-icons/fa";
+import { FaTruckFast } from "react-icons/fa6";
 import { LuUserRound } from "react-icons/lu";
 import { FiLogIn, FiLogOut } from "react-icons/fi";
 import { TbCurrencyNaira } from "react-icons/tb";
